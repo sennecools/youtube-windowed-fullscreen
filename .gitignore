@@ -1,0 +1,11 @@
+# Ignore node_modules and build output
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Ignore OS-specific files
+Thumbs.db
+
+# Ignore assets as of now since I dont own them
+assets/

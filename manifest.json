@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Windowed Fullscreen",
+    "description": "An extension to enable a windowed fullscreen mode for YouTube videos.",
+    "version": "1.0",
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://www.youtube.com/*"
+            ],
+            "js": [
+                "dist/content_script.js"
+            ],
+            "css": [
+                "src/style.css"
+            ]
+        }
+    ],
+    "host_permissions": [
+        "*://www.youtube.com/*"
+    ],
+    "action": {
+        "default_icon": {
+            "48": "assets/icon48.png"
+        }
+    }
+}

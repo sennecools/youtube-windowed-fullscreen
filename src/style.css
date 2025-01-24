@@ -1,0 +1,33 @@
+body.full_browser_mode {
+	overflow: hidden;
+}
+
+body.full_browser_mode #movie_player {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(100vw * 9 / 16);
+	max-height: 100vh;
+	z-index: 1000;
+}
+
+body.full_browser_mode .ytp-chrome-bottom {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+body.full_browser_mode .ytp-hover-preview {
+	transform: scale(1.2);
+	transform-origin: bottom left;
+}
+
+body.full_browser_mode ytd-app {
+	margin-top: 0 !important;
+}
+
+body.full_browser_mode #masthead-container,
+body.full_browser_mode .ytd-watch-next-secondary-results-renderer {
+	display: none !important;
+}
