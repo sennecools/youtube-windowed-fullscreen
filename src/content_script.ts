@@ -1,36 +1,61 @@
-import {
-	add_class_to_element,
-	remove_class_from_element,
-	set_element_style,
-} from './utils';
+console.log('Youtube windowed fullscreen browser extension loaded');
 
-const FULL_BROWSER_CLASS = 'full_browser_mode';
+const FULLSCREEN_BROWSER_MODE_CLASS = 'fullscreen_browser_mode';
+const MEDIA_PLAYER_ELEMENT = document.querySelector(
+	'#movie_player'
+) as HTMLElement;
+const MEDIA_PLAYER_CONTROL_BAR = document.querySelector(
+	'.ytp-chrome-bottom'
+) as HTMLElement;
 
-function toggle_full_browser_mode(): void {
-	const body = document.body;
-	const video_player = document.querySelector('#movie_player') as HTMLElement;
-	const chrome_bottom = document.querySelector(
-		'.ytp-chrome-bottom'
-	) as HTMLElement;
+function toggle_fullscreen_browser_mode(): void {
+	const body_element = document.body;
 
-	if (body.classList.contains(FULL_BROWSER_CLASS)) {
-		remove_class_from_element(body, FULL_BROWSER_CLASS);
-		if (video_player) set_element_style(video_player, { height: '' });
-		if (chrome_bottom) set_element_style(chrome_bottom, { width: '' });
+	if (body_element.classList.contains(FULLSCREEN_BROWSER_MODE_CLASS)) {
+		remove_class_from_element(body_element, FULLSCREEN_BROWSER_MODE_CLASS);
+		if (MEDIA_PLAYER_ELEMENT)
+			set_element_style(MEDIA_PLAYER_ELEMENT, { height: '' });
+		if (MEDIA_PLAYER_CONTROL_BAR)
+			set_element_style(MEDIA_PLAYER_CONTROL_BAR, { width: '' });
 	} else {
-		add_class_to_element(body, FULL_BROWSER_CLASS);
+		add_class_to_element(body_element, FULLSCREEN_BROWSER_MODE_CLASS);
 		window.scrollTo(0, 0);
 
-		if (chrome_bottom) {
-			set_element_style(chrome_bottom, {
+		if (MEDIA_PLAYER_CONTROL_BAR) {
+			set_element_style(MEDIA_PLAYER_CONTROL_BAR, {
 				width: `${window.innerWidth}px`,
 			});
 		}
 	}
 }
 
+function add_class_to_element(element: HTMLElement, class_name: string): void {
+	if (!element.classList.contains(class_name)) {
+		element.classList.add(class_name);
+	}
+}
+
+function remove_class_from_element(
+	element: HTMLElement,
+	class_name: string
+): void {
+	if (element.classList.contains(class_name)) {
+		element.classList.remove(class_name);
+	}
+}
+
+function set_element_style(
+	element: HTMLElement,
+	styles: Record<string, string>
+): void {
+	for (const [key, value] of Object.entries(styles)) {
+		element.style[key as any] = value;
+	}
+}
+
+// Key event listener for toggling fullscreen browser mode
 document.addEventListener('keydown', (event: KeyboardEvent) => {
 	if (event.key === '`') {
-		toggle_full_browser_mode();
+		toggle_fullscreen_browser_mode();
 	}
 });

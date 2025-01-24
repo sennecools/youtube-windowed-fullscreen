@@ -5,8 +5,8 @@
 		"outDir": "./dist",
 		"strict": true,
 		"noImplicitAny": true,
-		"lib": ["dom", "es2017"],
-		"include": ["src/**/*.ts"],
-		"exclude": ["node_modules"]
-	}
+		"lib": ["dom", "es2017"]
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules"]
 }
