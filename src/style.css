@@ -1,33 +1,26 @@
-body.fullscreen_browser_mode {
+/* Fullscreen Mode Styles */
+body.updated-full-mode {
 	overflow: hidden;
 }
 
-body.fullscreen_browser_mode #movie_player {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: calc(100vw * 9 / 16);
-	max-height: 100vh;
-	z-index: 1000;
+body.updated-full-mode #movie_player {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100vw !important;
+	height: 100vh !important;
+	z-index: 1000 !important;
 }
 
-body.fullscreen_browser_mode .ytp-chrome-bottom {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+body.updated-full-mode .ytp-progress-bar-container {
+	visibility: visible !important;
 }
 
-body.fullscreen_browser_mode .ytp-hover-preview {
-	transform: scale(1.2);
-	transform-origin: bottom left;
+body.updated-full-mode #masthead-container,
+body.updated-full-mode .ytp-chrome-bottom {
+	display: none !important;
 }
 
-body.fullscreen_browser_mode ytd-app {
-	margin-top: 0 !important;
-}
-
-body.fullscreen_browser_mode #masthead-container,
-body.fullscreen_browser_mode .ytd-watch-next-secondary-results-renderer {
+body.updated-full-mode ytd-comments {
 	display: none !important;
 }
